@@ -95,7 +95,7 @@ public class FirstFragment extends Fragment {
 
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.setMargins(50, 10, 50, 0);
+            layoutParams.setMargins(50, 10, 50, 10);
             turnoLayout.setLayoutParams(layoutParams);
 
             container.addView(turnoLayout);

@@ -9,7 +9,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="415dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/app_background"
         android:contentDescription="la concha de tu madre"
