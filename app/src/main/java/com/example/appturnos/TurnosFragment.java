@@ -12,17 +12,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.appturnos.databinding.FragmentFirstBinding;
+import com.example.appturnos.databinding.FragmentTurnosBinding;
 import com.example.appturnos.models.Turno;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class FirstFragment extends Fragment {
+public class TurnosFragment extends Fragment {
 
-    private FragmentFirstBinding binding;
+    private FragmentTurnosBinding binding;
 
     @Override
     public View onCreateView(
@@ -30,7 +29,7 @@ public class FirstFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentFirstBinding.inflate(inflater, container, false);
+        binding = FragmentTurnosBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -41,51 +40,49 @@ public class FirstFragment extends Fragment {
         LinearLayout container = requireView().findViewById(R.id.linearTurnos);
 
         List<Turno> turnos = Arrays.asList(
-                new Turno("Tomás Sosa - 41564756", "8:00 AM - 9:00 AM", "Dirección 1"),
-                new Turno("Turno 2", "9:00 AM - 10:00 AM", "Dirección 2"),
-                new Turno("Turno 3", "10:00 AM - 11:00 AM", "Dirección 3"),
-                new Turno("Turno 4", "10:00 AM - 11:00 AM", "Dirección 4"),
-                new Turno("Turno 5", "10:00 AM - 11:00 AM", "Dirección 5"),
-                new Turno("Turno 6", "10:00 AM - 11:00 AM", "Dirección 6"),
-                new Turno("Turno 7", "10:00 AM - 11:00 AM", "Dirección 7"),
-                new Turno("Turno 8", "10:00 AM - 11:00 AM", "Dirección 8"),
-                new Turno("Turno 9", "10:00 AM - 11:00 AM", "Dirección 9"),
-                new Turno("Turno 10", "10:00 AM - 11:00 AM", "Dirección 10"),
-                new Turno("Turno 11", "10:00 AM - 11:00 AM", "Dirección 11"),
-                new Turno("Turno 12", "10:00 AM - 11:00 AM", "Dirección 12"),
-                new Turno("Turno 13", "10:00 AM - 11:00 AM", "Dirección 13")
+                new Turno("Cliente 1 - 41564756", "8:00 AM - 9:00 AM", "Detalle 1"),
+                new Turno("Cliente 2 - 14651871", "9:05 AM - 9:30 AM", "Detalle 2"),
+                new Turno("Cliente 3 - 66847454", "9:50 AM - 10:30 AM", "Detalle 3"),
+                new Turno("Cliente 4 - 65496875", "10:35 AM - 11:30 AM", "Detalle 4"),
+                new Turno("Cliente 5 - 33114478", "12:30 AM - 01:00 PM", "Detalle 5"),
+                new Turno("Cliente 6 - 51467441", "01:20 PM - 02:00 PM", "Detalle 6"),
+                new Turno("Cliente 7 - 51546874", "02:00 PM - 02:40 PM", "Detalle 7"),
+                new Turno("Cliente 8 - 33694577", "03:00 PM - 03:00 PM", "Detalle 8"),
+                new Turno("Cliente 9 - 14156558", "05:00 PM - 05:30 PM", "Detalle 9"),
+                new Turno("Cliente 10 - 46235451", "06:00 PM - 06:30 PM", "Detalle 10"),
+                new Turno("Cliente 11 - 86247566", "07:00 PM - 07:30 PM", "Detalle 11")
         );
 
         for (Turno turno : turnos) {
             LinearLayout turnoLayout = new LinearLayout(requireActivity());
             turnoLayout.setOrientation(LinearLayout.VERTICAL);
-            turnoLayout.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.turno_background));
+            turnoLayout.setBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.primary));
             turnoLayout.setPadding(20, 30, 20, 30);
 
-            // Crea un GradientDrawable
+
             GradientDrawable drawable = new GradientDrawable();
             drawable.setShape(GradientDrawable.RECTANGLE);
-            drawable.setColor(ContextCompat.getColor(requireActivity(), R.color.turno_background)); // Establece el color de fondo
-            drawable.setCornerRadius(20f); // Establece el radio de las esquinas (20dp en este caso)
-            drawable.setStroke(2, ContextCompat.getColor(requireActivity(), R.color.black)); // Establece el borde (2px de grosor, color negro)
+            drawable.setColor(ContextCompat.getColor(requireActivity(), R.color.primary));
+            drawable.setCornerRadius(20f);
+            drawable.setStroke(2, ContextCompat.getColor(requireActivity(), R.color.black));
 
             turnoLayout.setBackground(drawable);
 
             TextView titulo = new TextView(requireActivity());
             titulo.setText(turno.getTitulo());
-            titulo.setTextSize(18f);
+            titulo.setTextSize(getResources().getDimension(R.dimen.titulo_size));
             titulo.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
             titulo.setTypeface(null, Typeface.BOLD);
 
             TextView subtitulo = new TextView(requireActivity());
             subtitulo.setText(turno.getHorario());
-            subtitulo.setTextSize(16f);
+            subtitulo.setTextSize(getResources().getDimension(R.dimen.subtitulo_size));
             subtitulo.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
 
 
             TextView body = new TextView(requireActivity());
             body.setText(turno.getDireccion());
-            body.setTextSize(14f);
+            body.setTextSize(getResources().getDimension(R.dimen.body_size));
             body.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
 
 
@@ -101,12 +98,6 @@ public class FirstFragment extends Fragment {
             container.addView(turnoLayout);
         }
 
-
-
-        /*binding.buttonFirst.setOnClickListener(v ->
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment)
-        );*/
     }
 
     @Override

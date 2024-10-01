@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/Turnos"
-        android:name="com.example.appturnos.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:name="com.example.appturnos.TurnosFragment"
+        android:label="@string/turnos_fragment_label"
+        tools:layout="@layout/fragment_turnos">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            android:id="@+id/action_TurnosFragment_to_SettingsFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.appturnos.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:name="com.example.appturnos.SettingsFragment"
+        android:label="@string/settings_fragment_label"
+        tools:layout="@layout/fragment_settings">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            android:id="@+id/action_SettingsFragment_to_TurnosFragment"
             app:destination="@id/Turnos" />
     </fragment>
 </navigation>
