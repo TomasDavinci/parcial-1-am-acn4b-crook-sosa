@@ -1,6 +1,9 @@
 package com.example.appturnos;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -43,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
                 .setAction("Action", null).show());
     }
 
+    Button miBoton = findViewById(R.id.miBoton);
+        miBoton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // Acción al hacer clic
+            Toast.makeText(MainActivity.this, "¡Botón clickeado!", Toast.LENGTH_SHORT).show();
+        }
+    });
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,4 +81,5 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 }
