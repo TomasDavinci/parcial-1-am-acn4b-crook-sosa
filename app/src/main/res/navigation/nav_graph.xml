@@ -3,20 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/Turnos">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/Turnos"
         android:name="com.example.appturnos.TurnosFragment"
         android:label="@string/turnos_fragment_label"
         tools:layout="@layout/fragment_turnos">
-
+        <action
+            android:id="@+id/action_TurnosFragment_to_FormTurnoFragment"
+            app:destination="@id/FormTurnoFragment" />
         <action
             android:id="@+id/action_TurnosFragment_to_SettingsFragment"
-            app:destination="@id/SecondFragment" />
+            app:destination="@id/SettingsFragment" />
+
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/FormTurnoFragment"
+        android:name="com.example.appturnos.TurnosFragment"
+        android:label="@string/form_turno_fragment_label"
+        tools:layout="@layout/form_turno_fragment">
+
+        <action
+            android:id="@+id/action_FormTurnosFragment_to_TurnosFragment"
+            app:destination="@id/Turnos" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/SettingsFragment"
         android:name="com.example.appturnos.SettingsFragment"
         android:label="@string/settings_fragment_label"
         tools:layout="@layout/fragment_settings">
@@ -25,4 +39,14 @@
             android:id="@+id/action_SettingsFragment_to_TurnosFragment"
             app:destination="@id/Turnos" />
     </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.appturnos.LoginFragment"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_loginFragment_to_turnosFragment"
+            app:destination="@id/Turnos" />
+    </fragment>
+
 </navigation>

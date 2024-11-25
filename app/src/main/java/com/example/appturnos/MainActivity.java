@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +28,7 @@ import androidx.navigation.ui.NavigationUI;
 
 
 import com.example.appturnos.databinding.ActivityMainBinding;
+import com.google.firebase.FirebaseApp;
 
 
 import android.view.Menu;
@@ -44,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        FirebaseApp.initializeApp(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -86,9 +91,16 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.add.setOnClickListener(view -> Snackbar.make(view, "--------------", Snackbar.LENGTH_LONG)
-                .setAnchorView(R.id.add)
-                .setAction("Action", null).show());
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.loginFragment || destination.getId() == R.id.SettingsFragment) {
+                getSupportActionBar().hide();
+            } else {
+                getSupportActionBar().show();
+            }
+        });
+
+
+
     }
 
 
