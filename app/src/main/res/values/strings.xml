@@ -4,6 +4,20 @@
     <string name="action_logout">Cerrar sesion</string>
     <string name="turnos_fragment_label">Turnos</string>
     <string name="settings_fragment_label">Ajustes</string>
+    <string name="form_turno_fragment_label">form</string>
     <string name="scroll_desc">scroll view turnos</string>
     <string name="add_desc">scroll view turnos</string>
+
+    <string name="title_activity_login_fragment">LoginFragment</string>
+
+    <!-- hits del form de turnos -->
+    <string name="detalleHint">Detalle</string>
+    <string name="direccionHint">Dirección</string>
+    <string name="fechaTurnoHint">Fecha (dd/mm/yyyy)</string>
+    <string name="horarioTurnoHint">Horario (hh:mm)</string>
+    <string name="guardarTurnoHint">Guardar Turno</string>
+    <string name="nombreClienteHint">Nombre del Cliente</string>
+    <string name="dniClienteHint">DNI del Cliente</string>
+
+
 </resources>
