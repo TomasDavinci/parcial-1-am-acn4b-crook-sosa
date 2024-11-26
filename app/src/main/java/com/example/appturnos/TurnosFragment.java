@@ -50,42 +50,17 @@ public class TurnosFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
-
         binding.add.setOnClickListener(fragment -> {
+
             NavController navController = Navigation.findNavController(requireView());
             navController.navigate(R.id.action_TurnosFragment_to_FormTurnoFragment);
+
         });
 
 
         super.onViewCreated(view, savedInstanceState);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        /*
-        List<Turno> turnos = Arrays.asList(
-                new Turno(1L, "Cliente 1", "12345678", "Detalle 1", "Direccion 1", Timestamp.now(), "Titulo 1", "Horario 1"),
-                new Turno(2L, "Cliente 2", "87654321", "Detalle 2", "Direccion 2", Timestamp.now(), "Titulo 2", "Horario 2"),
-                new Turno(3L, "Cliente 3", "45678912", "Detalle 3", "Direccion 3", Timestamp.now(), "Titulo 3", "Horario 3")
-        );
-
-        WriteBatch batch = db.batch();
-
-        for (Turno turno : turnos) {
-            DocumentReference docRef = db.collection("AppTurnos").document(); // ID automático
-            batch.set(docRef, turno);
-        }
-
-        batch.commit().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Log.d("Firebase", "Registros subidos exitosamente");
-            } else {
-                Log.e("Firebase", "Error al subir registros", task.getException());
-            }
-        });*/
-
-
-
-
 
         LinearLayout container = requireView().findViewById(R.id.linearTurnos);
 
@@ -129,12 +104,10 @@ public class TurnosFragment extends Fragment {
                     subtitulo.setTextSize(getResources().getDimension(R.dimen.subtitulo_size));
                     subtitulo.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
 
-
                     TextView body = new TextView(requireActivity());
                     body.setText(turno.getDireccion());
                     body.setTextSize(getResources().getDimension(R.dimen.body_size));
                     body.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
-
 
                     turnoLayout.addView(titulo);
                     turnoLayout.addView(subtitulo);

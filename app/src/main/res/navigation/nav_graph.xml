@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/FormTurnoFragment"
-        android:name="com.example.appturnos.TurnosFragment"
+        android:name="com.example.appturnos.TurnoFormFragment"
         android:label="@string/form_turno_fragment_label"
         tools:layout="@layout/form_turno_fragment">
 

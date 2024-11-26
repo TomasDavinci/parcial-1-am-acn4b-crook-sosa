@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-            if (destination.getId() == R.id.loginFragment || destination.getId() == R.id.SettingsFragment) {
+            if (destination.getId() == R.id.loginFragment) {
                 getSupportActionBar().hide();
             } else {
                 getSupportActionBar().show();
@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        if (navController.getCurrentDestination() != null &&
+                navController.getCurrentDestination().getId() == R.id.SettingsFragment) {
+            menu.clear();
+        }
         return true;
     }
 
@@ -73,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
                     .navigate(R.id.action_TurnosFragment_to_SettingsFragment);
+
             item.setVisible(false);
             return true;
         }

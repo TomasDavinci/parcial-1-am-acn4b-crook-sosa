@@ -13,78 +13,92 @@
         android:id="@+id/et_nombre_cliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:hint="@string/nombreClienteHint"
-        android:textColor="@color/black"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_dni_cliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:hint="@string/dniClienteHint"
-        android:textColor="@color/black"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/et_nombre_cliente"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_nombre_cliente" />
 
     <EditText
         android:id="@+id/et_detalle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:hint="@string/detalleHint"
-        android:textColor="@color/black"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/et_dni_cliente"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_dni_cliente" />
 
     <EditText
         android:id="@+id/et_direccion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:hint="@string/direccionHint"
-        android:textColor="@color/black"
         android:inputType="textPostalAddress"
-        app:layout_constraintTop_toBottomOf="@id/et_detalle"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_detalle" />
 
     <EditText
         android:id="@+id/et_fecha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
         android:hint="@string/fechaTurnoHint"
         android:textColor="@color/black"
-        android:focusable="true"
-        android:clickable="true"
-        app:layout_constraintTop_toBottomOf="@id/et_direccion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_direccion" />
 
     <EditText
         android:id="@+id/et_horario"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:focusable="true"
         android:hint="@string/horarioTurnoHint"
         android:textColor="@color/black"
-        android:focusable="true"
-        android:clickable="true"
-        app:layout_constraintTop_toBottomOf="@id/et_fecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/et_fecha" />
 
     <Button
         android:id="@+id/btn_guardar_turno"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/guardarTurnoHint"
+        android:layout_marginTop="24dp"
         android:background="@color/primary"
-        app:layout_constraintTop_toBottomOf="@id/et_horario"
+        android:text="@string/guardarTurnoHint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/et_horario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
