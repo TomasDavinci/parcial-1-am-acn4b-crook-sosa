@@ -40,13 +40,17 @@ public class RegistroFragment extends Fragment {
             String confirmPassword = confirmPasswordField.getText().toString().trim();
             String direccion = direccionField.getText().toString();
 
+            emailField.setText("");
+            passwordField.setText("");
+            confirmPasswordField.setText("");
+            direccionField.setText("");
+
             if (!email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty()) {
                 if (password.equals(confirmPassword)) {
                     mAuth.createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(task -> {
                                 if (task.isSuccessful()) {
-                                    String uid = mAuth.getCurrentUser().getUid();
-                                    registrarUsuario(uid, direccion, email);
+                                    registrarUsuario(direccion, email);
                                     NavController navController = Navigation.findNavController(view);
                                     navController.navigate(R.id.action_registroFragment_to_turnosFragment);
                                 } else {
@@ -70,12 +74,14 @@ public class RegistroFragment extends Fragment {
         return view;
     }
 
-    private void registrarUsuario(String uid, String direccion, String email) {
+    private void registrarUsuario(String direccion, String email) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Map<String, Object> userData = new HashMap<>();
         userData.put("direccion", direccion);
         userData.put("email", email);
+
+
 
         db.collection("Usuarios").add(userData)
                 .addOnSuccessListener(aVoid -> {

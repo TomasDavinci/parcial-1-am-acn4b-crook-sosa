@@ -35,11 +35,14 @@ public class LoginFragment extends Fragment {
         loginButton.setOnClickListener(v -> {
             String email = emailField.getText().toString().trim();
             String password = passwordField.getText().toString().trim();
+            emailField.setText("");
+            passwordField.setText("");
 
             if (!email.isEmpty() && !password.isEmpty()) {
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
+
                                 NavController navController = Navigation.findNavController(view);
                                 navController.navigate(R.id.action_loginFragment_to_turnosFragment);
                             } else {
