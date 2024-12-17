@@ -25,6 +25,12 @@ public class LoginFragment extends Fragment {
         EditText emailField = view.findViewById(R.id.et_email);
         EditText passwordField = view.findViewById(R.id.et_password);
         Button loginButton = view.findViewById(R.id.btn_login);
+        Button registroButton = view.findViewById(R.id.btn_go_register);
+
+        registroButton.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(view);
+            navController.navigate(R.id.action_loginFragment_to_registroFragment);
+        });
 
         loginButton.setOnClickListener(v -> {
             String email = emailField.getText().toString().trim();
@@ -46,5 +52,6 @@ public class LoginFragment extends Fragment {
         });
 
         return view;
+
     }
 }

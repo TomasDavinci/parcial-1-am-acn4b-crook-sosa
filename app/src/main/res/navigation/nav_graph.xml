@@ -17,6 +17,10 @@
             android:id="@+id/action_TurnosFragment_to_SettingsFragment"
             app:destination="@id/SettingsFragment" />
 
+        <action
+            android:id="@+id/action_TurnosFragment_to_DetalleFragment"
+            app:destination="@id/DetalleTurnoFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/FormTurnoFragment"
@@ -47,6 +51,38 @@
         <action
             android:id="@+id/action_loginFragment_to_turnosFragment"
             app:destination="@id/Turnos" />
+        <action
+            android:id="@+id/action_loginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.example.appturnos.RegistroFragment"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_registroFragment_to_turnosFragment"
+            app:destination="@id/Turnos" />
+
+        <action
+            android:id="@+id/action_registroFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DetalleTurnoFragment"
+        android:name="com.example.appturnos.DetalleFragment"
+        android:label="@string/form_turno_fragment_label"
+        tools:layout="@layout/fragment_detalle">
+
+        <action
+            android:id="@+id/action_DetalleFragment_to_TurnosFragment"
+            app:destination="@id/Turnos" />
+        <action
+            android:id="@+id/action_DetalleFragment_to_FormTurnoFragment"
+            app:destination="@id/FormTurnoFragment" />
+
     </fragment>
 
 </navigation>

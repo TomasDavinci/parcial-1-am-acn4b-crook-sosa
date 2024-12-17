@@ -3,32 +3,116 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/app_background">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="127dp"
-        android:layout_height="66dp"
-        android:layout_marginEnd="220dp"
-        android:text="TextView"
+    <LinearLayout
+        android:id="@+id/layoutTextDetalle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/detalleButtonLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="22dp" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="89dp"
-        android:layout_height="65dp"
-        app:srcCompat="@android:drawable/stat_sys_phone_call"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="650dp" />
+        <TextView
+            android:id="@+id/clienteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:background="@color/primary"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="Cliente: Juan Perez\nDNI: 12345678" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="85dp"
-        android:layout_height="66dp"
-        app:srcCompat="@android:drawable/sym_action_email"
-        tools:layout_editor_absoluteX="235dp"
-        tools:layout_editor_absoluteY="650dp" />
+        <TextView
+            android:id="@+id/fechaTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:background="@color/primary"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Fecha: 10/12/2024 - 08:00 a 14:00" />
+
+        <TextView
+            android:id="@+id/direccionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center_vertical"
+            android:background="@color/primary"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Dirección: Calle Falsa 123" />
+
+        <TextView
+            android:id="@+id/detalleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:gravity="top"
+            android:background="@color/app_background"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/white"
+            android:textSize="16sp"
+            android:text="Detalle: Este es el detalle del turno con toda la información adicional necesaria para el cliente." />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detalleButtonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/phoneButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/primary"
+            app:srcCompat="@android:drawable/stat_sys_phone_call"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/emailButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/primary"
+            app:srcCompat="@android:drawable/sym_action_email"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/primary"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            app:tint="@color/white" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:backgroundTint="@color/primary"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:tint="@color/white" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

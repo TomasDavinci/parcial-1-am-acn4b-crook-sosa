@@ -1,8 +1,8 @@
 package com.example.appturnos;
-
 import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,26 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import com.example.appturnos.databinding.FragmentTurnosBinding;
 import com.example.appturnos.models.Turno;
-import com.google.firebase.Firebase;
-
-import java.util.Arrays;
-import java.util.List;
-
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.type.DateTime;
-import com.google.firebase.firestore.WriteBatch;
-import com.google.firebase.firestore.DocumentReference;
+
+import java.util.Date;
+import java.util.Locale;
 
 
 public class TurnosFragment extends Fragment {
@@ -50,11 +45,12 @@ public class TurnosFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
-        binding.add.setOnClickListener(fragment -> {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
 
+        binding.add.setOnClickListener(fragment -> {
             NavController navController = Navigation.findNavController(requireView());
             navController.navigate(R.id.action_TurnosFragment_to_FormTurnoFragment);
-
         });
 
 
@@ -64,19 +60,22 @@ public class TurnosFragment extends Fragment {
 
         LinearLayout container = requireView().findViewById(R.id.linearTurnos);
 
-        db.collection("AppTurnos").get().addOnCompleteListener(task -> {
+        db.collection("AppTurnos").whereEqualTo("emailUsuario",user.getEmail()).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 for (DocumentSnapshot document : task.getResult()) {
-
+                    String idTurno = document.getId();
                     Turno turno = new Turno(
-                            document.get("idUsuario", Long.class),
+                            idTurno,
                             document.get("nombreCliente", String.class),
                             document.get("dniCliente", String.class),
                             document.get("detalle", String.class),
                             document.get("direccion", String.class),
-                            document.get("fechaTurno", Timestamp.class),
+                            document.get("fechaTurno", Date.class),
                             document.get("titulo", String.class),
-                            document.get("horario", String.class)
+                            document.get("horario", String.class),
+                            document.get("emailUsuario", String.class),
+                            document.get("emailCliente", String.class),
+                            document.get("telefono", String.class)
                     );
 
                     LinearLayout turnoLayout = new LinearLayout(requireActivity());
@@ -99,8 +98,12 @@ public class TurnosFragment extends Fragment {
                     titulo.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
                     titulo.setTypeface(null, Typeface.BOLD);
 
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.getDefault());
+                    String fechaFormateada = sdf.format(turno.getFechaTurno());
+
                     TextView subtitulo = new TextView(requireActivity());
-                    subtitulo.setText(turno.getHorario());
+                    subtitulo.setText(fechaFormateada);
                     subtitulo.setTextSize(getResources().getDimension(R.dimen.subtitulo_size));
                     subtitulo.setTextColor(ContextCompat.getColor(requireActivity(), R.color.white));
 
@@ -117,6 +120,14 @@ public class TurnosFragment extends Fragment {
                             LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     layoutParams.setMargins(50, 10, 50, 10);
                     turnoLayout.setLayoutParams(layoutParams);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("turno", turno);
+
+                    turnoLayout.setOnClickListener(v -> {
+                        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
+                        navController.navigate(R.id.action_TurnosFragment_to_DetalleFragment, bundle);
+                    });
 
                     container.addView(turnoLayout);
                 }
