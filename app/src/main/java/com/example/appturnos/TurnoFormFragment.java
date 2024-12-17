@@ -169,15 +169,10 @@ public class TurnoFormFragment extends Fragment {
             if (isChecked) {
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-                Log.d("coso", email);
 
                 db.collection("Usuarios").whereEqualTo("email",email).get().addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
-                        Log.d("coso",task.getResult().getDocuments().toString());
-
-                        QuerySnapshot querySnapshot = task.getResult();
                         for (DocumentSnapshot turno : task.getResult().getDocuments()){
-                            Log.d("coso",turno.toString());
                             if (turno.exists()) {
                                 String direccionGuardada = turno.getString("direccion");
                                 etDireccion.setText(direccionGuardada);

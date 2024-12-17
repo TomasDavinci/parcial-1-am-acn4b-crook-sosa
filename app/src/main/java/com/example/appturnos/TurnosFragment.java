@@ -131,17 +131,7 @@ public class TurnosFragment extends Fragment {
 
                     container.addView(turnoLayout);
                 }
-            } else {
-                // Error al obtener la colección
-                Log.d("prueba","no anduvo");
             }
         });
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
 }

@@ -8,14 +8,11 @@
     <fragment
         android:id="@+id/Turnos"
         android:name="com.example.appturnos.TurnosFragment"
-        android:label="@string/turnos_fragment_label"
+        android:label="Turnos"
         tools:layout="@layout/fragment_turnos">
         <action
             android:id="@+id/action_TurnosFragment_to_FormTurnoFragment"
             app:destination="@id/FormTurnoFragment" />
-        <action
-            android:id="@+id/action_TurnosFragment_to_SettingsFragment"
-            app:destination="@id/SettingsFragment" />
 
         <action
             android:id="@+id/action_TurnosFragment_to_DetalleFragment"
@@ -25,23 +22,13 @@
     <fragment
         android:id="@+id/FormTurnoFragment"
         android:name="com.example.appturnos.TurnoFormFragment"
-        android:label="@string/form_turno_fragment_label"
+        android:label="Nuevo turno"
         tools:layout="@layout/form_turno_fragment">
 
         <action
             android:id="@+id/action_FormTurnosFragment_to_TurnosFragment"
             app:destination="@id/Turnos" />
 
-    </fragment>
-    <fragment
-        android:id="@+id/SettingsFragment"
-        android:name="com.example.appturnos.SettingsFragment"
-        android:label="@string/settings_fragment_label"
-        tools:layout="@layout/fragment_settings">
-
-        <action
-            android:id="@+id/action_SettingsFragment_to_TurnosFragment"
-            app:destination="@id/Turnos" />
     </fragment>
 
     <fragment
@@ -60,7 +47,7 @@
     <fragment
         android:id="@+id/registroFragment"
         android:name="com.example.appturnos.RegistroFragment"
-        android:label="Login" >
+        android:label="Registro" >
         <action
             android:id="@+id/action_registroFragment_to_turnosFragment"
             app:destination="@id/Turnos" />
@@ -73,7 +60,7 @@
     <fragment
         android:id="@+id/DetalleTurnoFragment"
         android:name="com.example.appturnos.DetalleFragment"
-        android:label="@string/form_turno_fragment_label"
+        android:label="Detalle"
         tools:layout="@layout/fragment_detalle">
 
         <action
